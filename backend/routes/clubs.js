@@ -37,4 +37,20 @@ router.route('/:id').delete((req, res)=> {
     .catch(err => res.status(400).json('Error deleting club!' + err ));
 });
 
+router.route('/update/:id').post((req, res)=> {
+    console.log(req.params.id);
+    Club.findById(req.params.id)
+    .then(club => {
+        club.clubname = req.body.clubname;
+        club.shortname = req.body.shortname;
+        club.founded = Number(req.body.founded);
+        club.country = req.body.country;
+
+        club.save()
+        .then(()=> res.json('Club Updated!'))
+        .catch(err => res.status(400).json('Error updating club!'+ err));
+    }).catch(err => res.status(400).json('Error getting club to update!'+ err));
+    
+});
+
 module.exports = router;
