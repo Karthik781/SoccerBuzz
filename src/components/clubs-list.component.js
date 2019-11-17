@@ -1,5 +1,5 @@
 import React , { Component} from "react"
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const ClubView = props => (
@@ -8,6 +8,10 @@ const ClubView = props => (
         <td>{props.club.shortname}</td>
         <td>{props.club.founded}</td>
         <td>{props.club.country}</td>
+        {/* <td><button onClick={props.deleteClub(props.club._id)}>delete</button> </td> */}
+        <td> 
+            <Link to = {"/clubs/edit/" + props.club._id}>edit</Link>
+        </td>
     </tr>
 )
 
@@ -28,13 +32,22 @@ export default class ClubsList extends Component {
             }).catch(err => { console.log(err)})
     }
 
-    exerciseList(){
+    clubList(){
         return (
             this.state.clubs.map(currentClub => {
-                return <ClubView club = {currentClub} key = {currentClub._id} />
+                return <ClubView club = {currentClub} deleteClub = {this.deleteClub} key = {currentClub._id} />
             })
         )
     }
+//Sort out deleting isuue
+    // deleteClub(id){
+    //     axios.delete('http://localhost:5000/clubs/'+id)
+    //         .then(res => console.log(res.data))
+
+    //     this.setState({
+    //         clubs : this.state.clubs.filter(ele => ele._id !== id)
+    //     })
+    // }
 
     render(){
         return(
@@ -47,10 +60,11 @@ export default class ClubsList extends Component {
                             <th>Short Name</th>
                             <th>Founded</th>
                             <th>Country</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.exerciseList()}
+                        {this.clubList()}
                     </tbody>
                 </table>
             </div>

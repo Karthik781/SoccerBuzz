@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Navbar />
       <Route path ="/" exact component = {Home} />
-      <Route path = "/clubs/all" exact component = {ClubsList} />
+      <Route path = "/clubs/all" component = {ClubsList} />
       <Route path = "/clubs/edit/:id" component = {EditClub} />
       <Route path = "/clubs/create" component = {CreateClub} />
       <Route path = "/clubs/players" component ={Playerslist} />

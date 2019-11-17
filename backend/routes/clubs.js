@@ -32,12 +32,12 @@ router.route('/:id').get((req,res)=> {
 });
 
 router.route('/:id').delete((req, res)=> {
-    Club.findByIdAndDelete(req.params.id)
+    Club.findOneAndDelete(req.params.id)
     .then(() => res.json("Deleted successfully!"))
     .catch(err => res.status(400).json('Error deleting club!' + err ));
 });
 
-router.route('/update/:id').post((req, res)=> {
+router.route('/edit/:id').post((req, res)=> {
     console.log(req.params.id);
     Club.findById(req.params.id)
     .then(club => {
