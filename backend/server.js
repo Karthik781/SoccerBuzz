@@ -12,7 +12,7 @@ app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 
-mongoose.connect(uri, {
+mongoose.connect('mongodb+srv://karthikK:admin123@cluster0-k8btq.gcp.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
