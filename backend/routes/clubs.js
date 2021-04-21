@@ -12,12 +12,14 @@ router.route('/add').post((req, res) => {
     const shortname = req.body.shortname;
     const founded = Number(req.body.founded);
     const country = req.body.country;
+    const league = req.body.league;
 
     const newClub = new Club({
         clubname,
         shortname,
         founded,
         country,
+        league,
     });
 
     newClub.save()
@@ -45,6 +47,7 @@ router.route('/edit/:id').post((req, res)=> {
         club.shortname = req.body.shortname;
         club.founded = Number(req.body.founded);
         club.country = req.body.country;
+        club.league = req.body.league;
 
         club.save()
         .then(()=> res.json('Club Updated!'))

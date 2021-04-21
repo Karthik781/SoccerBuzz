@@ -8,6 +8,7 @@ const ClubView = props => (
         <td>{props.club.shortname}</td>
         <td>{props.club.founded}</td>
         <td>{props.club.country}</td>
+        <td>{props.club.league}</td>
         {/* <td><button onClick={props.deleteClub(props.club._id)}>delete</button> </td> */}
         <td> 
             <Link to = {"/clubs/edit/" + props.club._id}>edit</Link>
@@ -61,6 +62,7 @@ export default class ClubsList extends Component {
                             <th>Founded</th>
                             <th>Country</th>
                             <th>Actions</th>
+                            <th>League</th>
                         </tr>
                     </thead>
                     <tbody>
