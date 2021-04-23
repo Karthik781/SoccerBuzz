@@ -11,12 +11,14 @@ export default class EditClub extends Component {
         this.onChangeFounded = this.onChangeFounded.bind(this)
         this.onChangeCountry = this.onChangeCountry.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onChangeLeague = this.onChangeLeague.bind(this)
 
         this.state = {
             clubname : '',
             shortname : '',
             founded : '',
             country : '',
+            league:'',
             players : []
         }
     }
@@ -30,6 +32,7 @@ export default class EditClub extends Component {
                     shortname: res.data.shortname,
                     founded : res.data.founded,
                     country: res.data.country,
+                    league: res.data.league,
                 })
             }).catch(err => console.log(err))
     }
@@ -58,6 +61,12 @@ export default class EditClub extends Component {
         });
     }
 
+    onChangeLeague(e){
+        this.setState({
+            league: e.target.value
+        })
+    }
+
     onSubmit(e){
         e.preventDefault();
 
@@ -65,7 +74,8 @@ export default class EditClub extends Component {
             clubname : this.state.clubname,
             shortname : this.state.shortname,
             founded :this.state.founded,
-            country: this.state.country
+            country: this.state.country,
+            league: this.state.league,
         }
 
         console.log(newClub)
@@ -115,6 +125,15 @@ export default class EditClub extends Component {
                             className="form-control"
                             value = {this.state.country}
                             onChange = {this.onChangeCountry} 
+                        />
+                    </div>
+                    <div className = "form-group">
+                        <label>League: </label>
+                        <input type = "text"
+                            required
+                            className="form-control"
+                            value = {this.state.league}
+                            onChange = {this.onChangeLeague} 
                         />
                     </div>
                     <div className="form-group">
