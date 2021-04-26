@@ -12,12 +12,15 @@ router.route('/add').post((req, res)=>{
     const age = Number(req.body.age);
     const nationality = req.body.nationality;
     const contract = Number(req.body.contract);
+    const club = req.body.club;
 
     const newPlayer = new Player({
         playername,
         age,
         nationality,
         contract,
+        club,
+        club_id
     });
 
     newPlayer.save()

@@ -1,20 +1,26 @@
 import React , { Component} from "react"
-import { Link } from 'react-router-dom'
+import { Link,Route } from 'react-router-dom'
 import axios from 'axios'
+import CreatePlayer from './create-player.component';
 
-const ClubView = props => (
-    <tr>
-        <td>{props.club.clubname}</td>
-        <td>{props.club.shortname}</td>
-        <td>{props.club.founded}</td>
-        <td>{props.club.country}</td>
-        {/* <td><button onClick={props.deleteClub(props.club._id)}>delete</button> </td> */}
-        <td> 
-            <Link to = {"/clubs/edit/" + props.club._id}>edit</Link>
-        </td>
-        <td>{props.club.league}</td>
-    </tr>
-)
+const ClubView = props => {
+    const id = props.club._id;
+    return(
+        <tr>
+            <td> 
+                <Link to = {"/clubs/"+id+"/player"}>{props.club.clubname}</Link>
+            </td>
+            <td>{props.club.shortname}</td>
+            <td>{props.club.founded}</td>
+            <td>{props.club.country}</td>
+            {/* <td><button onClick={props.deleteClub(props.club._id)}>delete</button> </td> */}
+            <td> 
+                <Link to = {"/clubs/edit/" + props.club._id}>edit</Link>
+            </td>
+            <td>{props.club.league}</td>
+        </tr>
+    )
+}
 
 export default class ClubsList extends Component {
 

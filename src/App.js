@@ -9,6 +9,7 @@ import ClubsList from "./components/clubs-list.component"
 import EditClub from "./components/edit-club.component"
 import CreateClub from "./components/create-club.component"
 import Playerslist from "./components/player-list.component"
+import CreatePlayer from "./components/create-player.component"
 
 function App() {
   return ( 
@@ -20,6 +21,7 @@ function App() {
       <Route path = "/clubs/edit/:id" component = {EditClub} />
       <Route path = "/clubs/create" component = {CreateClub} />
       <Route path = "/clubs/players" component ={Playerslist} />
+      <Route path = "/clubs/:id/player" component ={CreatePlayer} />
     </Router>
   </div>
   );
