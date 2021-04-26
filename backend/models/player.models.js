@@ -8,7 +8,7 @@ const playerSchema = new Schema({
     nationality: { type: String, required:true },
     contract: { type: Number, required: true },
     club: { type:String, required: true},
-    club_id: {type: Number },
+    club_id: {type: String },
 }, {
     timestamps: true,
 });

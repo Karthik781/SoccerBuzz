@@ -13,6 +13,7 @@ router.route('/add').post((req, res)=>{
     const nationality = req.body.nationality;
     const contract = Number(req.body.contract);
     const club = req.body.club;
+    const club_id = req.body.club_id;
 
     const newPlayer = new Player({
         playername,

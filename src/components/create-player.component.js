@@ -1,10 +1,17 @@
 import React , { Component} from "react"
+import axios from "axios"
 
 export default class CreatePlayer extends Component {
 
     constructor(props){
         super(props);
 
+        this.onChangePlayerName = this.onChangePlayerName.bind(this);
+        this.onChangeAge = this.onChangeAge.bind(this);
+        this.onChangeNationality = this.onChangeNationality.bind(this);
+        this.onChangeContract = this.onChangeContract.bind(this);
+        this.onChangeClub = this.onChangeClub.bind(this);
+        this.onSubmit =this.onSubmit.bind(this);
 
         this.state = {
             playername : '',
@@ -13,8 +20,57 @@ export default class CreatePlayer extends Component {
             contract:'',
             club:'',
             club_id:'',
-        }
+        };
     }
+
+   
+    
+
+    onChangePlayerName(e){
+        this.setState({
+            playername: e.target.value
+        })
+    }
+    onChangeAge(e){
+        this.setState({
+            age: e.target.value
+        })
+    }
+    onChangeNationality(e){
+        this.setState({
+            nationality: e.target.value
+        })
+    }
+    onChangeContract(e){
+        this.setState({
+            contract: e.target.value
+        })
+    }
+    onChangeClub(e){
+        this.setState({
+            club: e.target.value
+        })
+    }
+   
+    onSubmit(e){
+        e.preventDefault();
+     //   console.log(this.props.match.params.id);
+        const newPlayer = {
+            playername : this.state.playername,
+            age : this.state.age,
+            nationality: this.state.nationality,
+            contract:this.state.contract,
+            club:this.state.club,
+            club_id:this.props.match.params.id,
+        }
+        //console.log(newPlayer);
+
+        axios.post('http://localhost:5000/players/add', newPlayer)
+        .then(res => console.log(res))
+        .catch(err=>console.log(err))
+    }
+
+
 
     render(){
         return(
