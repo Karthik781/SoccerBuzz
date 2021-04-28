@@ -10,6 +10,7 @@ import EditClub from "./components/edit-club.component"
 import CreateClub from "./components/create-club.component"
 import Playerslist from "./components/player-list.component"
 import CreatePlayer from "./components/create-player.component"
+import EditPlayer from "./components/edit-player.component"
 
 function App() {
   return ( 
@@ -20,7 +21,8 @@ function App() {
       <Route path = "/clubs/all" component = {ClubsList} />
       <Route path = "/clubs/edit/:id" component = {EditClub} />
       <Route path = "/clubs/create" component = {CreateClub} />
-      <Route path = "/clubs/players" component ={Playerslist} />
+      <Route exact path = "/players" component ={Playerslist} />
+      <Route path = "/players/edit/:id" component ={EditPlayer} />
       <Route path = "/clubs/:id/player" component ={CreatePlayer} />
     </Router>
   </div>

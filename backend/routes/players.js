@@ -29,5 +29,11 @@ router.route('/add').post((req, res)=>{
     .catch(err => res.status(400).json('Error adding player!'+ err));
 });
 
+router.route('/:id').get((req,res)=> {
+    Player.findById(req.params.id)
+    .then(club => res.json(club))
+    .catch(err => res.status(400).json('Error retriving player!' + err ));
+});
+
 module.exports = router;
 
