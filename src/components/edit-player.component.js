@@ -76,7 +76,7 @@ export default class EditPlayer extends Component{
         }
         //console.log(newPlayer);
 
-        axios.post('http://localhost:5000/players/add', newPlayer)
+        axios.post('http://localhost:5000/players/edit/'+ this.props.match.params.id, newPlayer)
         .then(res => console.log(res))
         .catch(err=>console.log(err))
     }

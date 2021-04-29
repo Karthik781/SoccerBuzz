@@ -35,5 +35,24 @@ router.route('/:id').get((req,res)=> {
     .catch(err => res.status(400).json('Error retriving player!' + err ));
 });
 
+router.route('/edit/:id').post((req, res)=>{
+    Player.findById(req.params.id)
+    .then(player => {
+
+        player.playername = req.body.playername;
+        player.age = Number(req.body.age);
+        player.nationality = req.body.nationality;
+        player.contract = Number(req.body.contract);
+        player.club = req.body.club;
+        player.club_id = req.body.club_id;
+    
+    
+        player.save()
+        .then(()=> res.json('player updated!'))
+        .catch(err => res.status(400).json('Error editing player!'+ err));
+    })
+
+});
+
 module.exports = router;
 
