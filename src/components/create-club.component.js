@@ -12,6 +12,7 @@ export default class CreateClub extends Component {
         this.onChangeCountry = this.onChangeCountry.bind(this)
         this.onChangeLeague = this.onChangeLeague.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onChangeDescription = this.onChangeDescription.bind(this)
 
         this.state = {
             clubname : '',
@@ -19,6 +20,7 @@ export default class CreateClub extends Component {
             founded : '',
             country : '',
             league: '',
+            description:'',
             players : []
         }
     }
@@ -62,6 +64,12 @@ export default class CreateClub extends Component {
         })
     }
 
+    onChangeDescription(e){
+        this.setState({
+            description: e.target.value
+        })
+    }
+
     onSubmit(e){
         e.preventDefault();
 
@@ -71,15 +79,14 @@ export default class CreateClub extends Component {
             founded :this.state.founded,
             country: this.state.country,
             league: this.state.league,
+            description: this.state.description,
         }
-
-        console.log(newClub)
         
         axios.post('http://localhost:5000/clubs/add', newClub)
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
 
-         window.location = '/clubs/all'
+        // window.location = '/clubs/all'
     }
 
     render(){
@@ -129,6 +136,14 @@ export default class CreateClub extends Component {
                             className="form-control"
                             value = {this.state.league}
                             onChange = {this.onChangeLeague} 
+                        />
+                    </div>
+                    <div className = "form-group">
+                        <label>Description: </label>
+                        <input type = "text"
+                            className="form-control"
+                            value = {this.state.description}
+                            onChange = {this.onChangeDescription} 
                         />
                     </div>
                     <div className="form-group">

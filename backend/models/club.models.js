@@ -8,6 +8,7 @@ const clubSchema = new Schema({
     founded: { type: Number, minlength:4 },
     country: { type: String, required: true },
     league: {type: String, required: true},
+    description: {type:String}
     }, {
         timestamps: true
 });

@@ -13,6 +13,7 @@ router.route('/add').post((req, res) => {
     const founded = Number(req.body.founded);
     const country = req.body.country;
     const league = req.body.league;
+    const description = req.body.description;
 
     const newClub = new Club({
         clubname,
@@ -20,6 +21,7 @@ router.route('/add').post((req, res) => {
         founded,
         country,
         league,
+        description,
     });
 
     newClub.save()
